@@ -1,24 +1,7 @@
 # T4J
 Materials connected with teaching Tidyverse for Journalists 
 
----
-title: "Tidyverse for Journalists"
-author: "Jonathan Stoneman & Luuk Sengers"
-date: "05/01/2021"
-output:
-  
-  word_document: default
-  html_document: default
-  pdf_document: default
----
 
-graphic script -- 
-
-
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 # R Workbook - Tidyverse for Journalists
 ## by Luuk Sengers and Jonathan Stoneman
