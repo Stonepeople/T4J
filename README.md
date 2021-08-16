@@ -1,5 +1,7 @@
 # T4J
-Materials connected with teaching Tidyverse for Journalists 
+Materials used for teaching Tidyverse for Journalists 
+
+The content below is intended as a memory jogger for people to us to consolidate their learning, which will normally have begun in a trainer-led session, online or in person. 
 
 
 
@@ -8,8 +10,8 @@ Materials connected with teaching Tidyverse for Journalists
 
 
 ##1. Get R up and running 
-Download and install R from: [https://cloud.r-project.org]
-Download and install R Studio from: [https://www.rstudio.com/products/rstudio/download] (choose the free version)
+If you don't have R yet you can download and install it from: [https://cloud.r-project.org](https://cloud.r-project.org)
+You also need a local copy of RStudio, which you can download and install from: [https://www.rstudio.com/products/rstudio/download](https://www.rstudio.com/products/rstudio/download) (select the free version)
 
 
 # Exploring your RStudio panes
@@ -40,13 +42,12 @@ knitr::include_graphics("pics/1_pane_layout.jpg")
 
 ## 3. Installing and loading packages
 
-Write/copy into the script:
+Let's start by making sure we have the tidyverse - write/copy into your script:
 
-# Install packages
 `install.packages("tidyverse")`
 `install.packages("writexl")`
 
-Now put the cursor anywhere in the second sentence and click: you have just written and executed your first R script!
+Now put the cursor anywhere in the second sentence and click "run": this executes your first R script!
 
 Notes:
 •	R comes with open source packages, created by programmers to ease our work and to make scripts shorter and easier to understand. 
@@ -79,35 +80,37 @@ Top left, where you create New (file, script, project – choose project and fol
 
 
 Notes:
-•	Although you can navigate your hard drive to find files, it is good practice to work in one directory, where all the relevant files are. In fact, it is very good practice to work in a projects. That way the resulting  Rproject file is a kind of wrapper, where all your scripts, notes and datasets will live together, but neatly separated from the ones used in other projects. When you create or open a project R Studio will automatically set that folder as its working directory for the session. 
+•	Although you can navigate your hard drive to find files, it is good practice to work in one directory, where all the relevant files are. In fact, it is very good practice to work in a project. That way the resulting Rproject file creates a kind of wrapper, where all your scripts, notes and datasets will live together, but neatly separated from the ones used in other projects. When you create or open a project R Studio will automatically set that folder as its working directory for the session. 
 •	The menus for project creating, opening, and management are in the two top corners of your screen (left or right, depending on your preference) 
 
 5. Importing a dataset in R
 
-To get the data we will be using in this book, go to the link:
-[http://bit.ly/Tidyverse_training] **(case sensitive)**
+To get the data we will be using in this workbook, go to :
+[https://github.com/Stonepeople/T4J/tree/main/T4J_session_data](https://github.com/Stonepeople/T4J/tree/main/T4J_session_data). For this part of the session you need to download a copy of [facility16.zip](https://github.com/Stonepeople/T4J/blob/main/T4J_session_data/FACILITY16.zip)
 
-Download the files to your hard drive using the "direct download" option. This will deliver the files as a .zip folder. You need to unzip the folder, using the "browse" option to navigate to the project folder you created in section 1, and extract all the files to that folder.  
+You will need to unzip the folder, using the "browse" option to navigate to the project folder you created in section 1, and extract all the files to that folder.  
 
-Write/copy into the script:
 # Import dataset
+Write/copy into the script:
+
 ``` {r eval=FALSE, include=TRUE}
 pollution <- read_csv("pollution16.csv")
 ```
 
-Note: Base R can only import .csv files. Other packages, such as readxl, will handle xls and xlsx. It will then be necessary to specify which worksheet of the file you want to import.
+Note: Base R only works with .csv files. You will need other packages to import other file types. In this course we use readxl to handle xls and xlsx. Because .xls files include various worksheets, you will need to specify which worksheet of the file you wish to import.
 
-If you are used to working in Excel or Google sheets, it may be a little disconcerting to start looking at your data in R without being able to see much of it. In Excel, for example, you probably like to scroll up and down a few columns and see what’s in there, perhaps using the filter option to get a list of contents of the columns you’re interested in. And you may well scroll right and left to see what variables you have. 
+If you are used to working in Excel or Google sheets, it may be a little disconcerting to start looking at your data in R without being able to see much of it. In Excel, for example, you probably like to scroll up and down a few columns and see what’s in there, perhaps using the filter option to get a list of contents of the columns you’re interested in. And you may well need to scroll right and left to see what variables you have. 
 
-In R it’s really easy, and there are two simple verbs you can use. If you type `names(nameofdataset)` you will see a list in the Console pane, showing the names of each column, and the column number (this will be very helpful in selecting the ones you want to concentrate on, and we come to the `select()` function soon)
+In R it’s really easy; there are two simple verbs you need to use. 
+If you type `names(nameofdataset)` you will see a list in the Console pane, showing the names of each column, and the column number (this will be very helpful in selecting the ones you want to concentrate on, when we come to the `select()` function soon)
 
-To see what’s in the columns themselves, you can use the `count()` function. This will print to the Console a list of each item in the chosen column, and the number of times that item appears – so, in the current dataset, you could type
+To get an idea of how many of each possible entry there are in the columns themselves, you use the `count()` function. This will print to the Console a list of each item in the chosen column, and the number of times that item appears – so, to see how many polluting facilities are registered in each EU country in this register you would type
  
 ```{r eval=FALSE, include=TRUE}
 pollution %>%  count(CountryName, sort = TRUE)
 ```
  
-to see how many polluting facilities are registered in each EU country in the register. Try it
+ Try it
 
 
 6. The basic Tidyverse functions (or verbs)
